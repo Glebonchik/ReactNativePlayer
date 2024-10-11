@@ -31,4 +31,4 @@ MyTVApp — это приложение на React Native, разработан�
 1. Клонируйте репозиторий:
    ```bash
    git clone https://github.com/Glebonchik/ReactNativePlayer.git
-   cd MyTVApp
+   cd ReactNativePlayer

@@ -1,4 +1,4 @@
-import  { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ScrollView, Alert, Animated, Text, BackHandler } from 'react-native';
 import { useKeepAwake } from 'expo-keep-awake';
 import { Video } from 'expo-av';
@@ -22,6 +22,7 @@ export default function App() {
   const translateX = useRef(new Animated.Value(0)).current;
   const mediaTimeoutRef = useRef(null);
   const playMediaData = { setLogMessage, setFileType, setShowMedia, fileUris, setCurrentMediaIndex,currentMediaIndex, mediaTimeoutRef, translateX };
+  const dataToDownloadMedia = [setLogMessage, setFileUris, activeFolderRef.current, contentDir1, contentDir2, configPath1, configPath2];
 
   let contentDir1;
   let contentDir2;
@@ -126,8 +127,8 @@ export default function App() {
         }
       }
 
-      if (!(await checkExistingFiles(setLogMessage, setFileUris, activeFolderRef.current, contentDir1, contentDir2, configPath1, configPath2))) {
-        await downloadAllMedia(setLogMessage, setFileUris, activeFolderRef.current, contentDir1, contentDir2, configPath1, configPath2);
+      if (!(await checkExistingFiles(dataToDownloadMedia))) {
+        await downloadAllMedia(dataToDownloadMedia);
       }
       playMedia(playMediaData);
     };

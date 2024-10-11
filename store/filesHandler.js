@@ -29,7 +29,7 @@ export const loadConfigFile = async (setLogMessage, folder, configPath1, configP
     }
   };
 
-export const checkExistingFiles = async (setLogMessage, setFileUris, folder, contentDir1, contentDir2, configPath1, configPath2) => {
+export const checkExistingFiles = async ([setLogMessage, setFileUris, folder, contentDir1, contentDir2, configPath1, configPath2]) => {
     try {
       const uris = [];
       const contentDir = folder === 'Content1' ? contentDir1 : contentDir2;
@@ -60,7 +60,7 @@ export const checkExistingFiles = async (setLogMessage, setFileUris, folder, con
     }
   };
 
-export const downloadAllMedia = async (setLogMessage, setFileUris, folder, contentDir1, contentDir2, configPath1, configPath2) => {
+export const downloadAllMedia = async ([setLogMessage, setFileUris, folder, contentDir1, contentDir2, configPath1, configPath2]) => {
     const uris = [];
     const contentDir = folder === 'Content1' ? contentDir1 : contentDir2;
     const config = await loadConfigFile(setLogMessage, folder, configPath1, configPath2);
